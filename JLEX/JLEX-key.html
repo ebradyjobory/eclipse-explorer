@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+   <title>
+Javascript Lunar Eclipse Explorer Key Page
+   </title>
+   <script language="JavaScript" type="text/javascript" src="../style/header.js"></script>
+   <script language="JavaScript" src="city-na.js"></script>
+   <script language="JavaScript" src="program.js"></script>
+   <meta name="author" content="F. Espenak" />
+   <meta name="keywords" content="eclipse, lunar, moon, total" />
+   <meta name="description" content="This page is part of NASA's Javascript Lunar Eclipse Explorer. 
+It can compute the local circumstances for every lunar eclipse visible from a city for any century from -1999 to 3000 (2000 BCE to 3000 CE)." />
+</head>
+
+<body class="lnfiveon" onload="init()">
+<script language="JavaScript" type="text/javascript" src="../style/highlighter.js"></script>
+
+<script language="JavaScript" type="text/javascript" src="../style/navbar.js"></script>
+<noscript>
+<h1><a href="http://www.nasa.gov/">NASA (National Aeronautics and Space Administration)</a></h1>
+<ul>
+   <li id="one"><a href="../eclipse.html"><span>Home</span></a></li>
+   <li id="two"><a href="../solar.html"><span>Solar Eclipses</span></a></li>
+   <li id="three"><a href="../lunar.html"><span>Lunar Eclipses</span></a></li>
+
+   <li id="four"><a href="../transit/transit.html"><span>Planetary Transits</span></a></li>
+   <li id="five"><a href="../phase/phase2001gmt.html"><span>Moon Phases</span></a></li>
+</ul>
+<h1><a href="../eclipse.html">Eclipse Home Page</a></h1>
+<h2>by Fred Espenak, GSFC Planetary Systems Laboratory</h2>
+</noscript>
+
+<div id="contentwrapper">
+
+<div id="singlecolumn">
+
+<h1 class="box">Javascript Lunar Eclipse Explorer</h1>
+<h2 class="box"><strong> 
+  KEY PAGE</strong></h2>
+
+<h2>Key to Javascript Lunar Eclipse Explorer </h2>
+<p class="quote">
+The Javascript Lunar Eclipse Explorer can compute the local circumstances for every lunar eclipse visible from a city for any century from -1999 to 3000 (2000 BCE to 3000 CE). 
+The followig key describes the data found in the local circunstances tables.
+<pre>
+
+
+Column     Heading     Definition/Description
+          
+   1      Calendar     Calendar Date when the eclipse begins. 
+            Date       Gregorian Calendar is used for dates after 1582 Oct 15.  
+                       Julian Calendar is used for dates before 1582 Oct 04.   
+
+   2        Ecl.       Eclipse Type where:
+            Type         N  = Penumbral Eclipse.
+                         P  = Partial Eclipse.
+                         T  = Total Eclipse.
+
+   3        Pen.       Penumbral magnitude is the fraction of the Moon's 
+            Mag.       DIAMETER obscured by Earth's penumbral shadow. 
+                       For penumbral eclipses, it is usually less than 1.0.
+
+   4        Umb.       Umbral magnitude is the fraction of the Moon's 
+            Mag.       DIAMETER obscured by Earth's umbral shadow. 
+                       For partial eclipses, it is greater than 0 but less than 1.0.
+                       For total eclipses, it is equal or greater than 1.0.
+
+   5       Pen.        Local Time when the penumbral eclipse begins.  
+          Eclipse      (not visible to the naked eye)
+          Begins       
+
+   6        Alt        Moon's altitude (in degrees) when penumbral eclipse begins.
+
+   7      Partial      Local Time when the partial eclipse begins.  
+          Eclipse      
+          Begins       
+
+   8        Alt        Moon's altitude (in degrees) when partial eclipse begins.
+
+   9       Total       Local Time when the total eclipse begins.  
+          Eclipse      
+          Begins       
+
+  10        Alt        Moon's altitude (in degrees) when total eclipse begins.
+
+  11        Mid.       Local Time at mid-eclipse.  
+          Eclipse      
+
+  12        Alt        Moon's altitude (in degrees) at mid-eclipse.
+
+  13       Total       Local Time when the total eclipse ends.  
+          Eclipse      
+           Ends      
+
+  14        Alt        Moon's altitude (in degrees) when total eclipse ends.
+          
+  15      Partial      Local Time when the partial eclipse ends.  
+          Eclipse      
+           Ends       
+
+  16        Alt        Moon's altitude (in degrees) when partial eclipse ends.
+
+  17       Pen.        Local Time when the penumbral eclipse ends.  
+          Eclipse      (not visible to the naked eye)
+           Ends       
+
+  18        Alt        Moon's altitude (in degrees) when penumbral eclipse ends.
+
+
+</pre>
+
+<p class="quote">All times are displayed in local time using the value from the <em>Time Zone</em> field in Geographic Coordinates Section (add 1 hour for Daylight Saving Time). 
+The start and end times of <em>penumbral</em> phases are of academic interest only since these events are never visible to the eye.  
+</p>
+<p class="quote">Events shown in gray occur below the horizon and can not be seen from the selected location. 
+The calendar date of an eclipse refers to the start time of the eclipse, even if the Moon is below the horizon at that time. 
+If an eclipse begins before midnight and ends after midnight, the latter  phases occur on the following calendar date.
+</p>
+
+<!-- ************************************************************ -->
+
+<hr class="blue" />
+
+<h2>Acknowledgments</h2>
+
+<p class="quote">The Javascript Lunar Eclipse Explorer was developed by Chris O'Byrne and Fred Espenak. 
+It features drop-down menus for city coordinates and buttons to select any century from -1999 to 3000 (2000 BCE to 3000 CE). 
+It can be used to explore the frequency and circumstances of all lunar eclipses visible from any location on Earth. 
+
+</p>
+<p class="quote">
+The Besselian elements and values of <a href="../SEcat5/deltat.html">&#916;T</a> used in Lunar Eclipse Explorer were calculated by Jean Meeus and Fred Espenak. 
+For the purposes of calculating eclipse circumstances from a given place, the growing <a href="../SEcat5/uncertainty.html">uncertainty</a> in the value of <a href="../SEcat5/deltat.html">&#916;T</a> and the corresponding longitude become unacceptably large outside time period of -1999 to 3000 (2000 BCE to 3000 CE). 
+
+<!-- The Besselian elements and values of <a href="../SEcat5/deltat.html">&#916;T</a> used in Lunar Eclipse Explorer were calculated by Jean Meeus and Fred Espenak. 
+-->
+
+<p class="quote">Permission is freely granted to reproduce this data when accompanied by an acknowledgment:</p>
+
+<p align="center">"Eclipse Predictions by Fred Espenak and Chris O'Byrne (NASA's GSFC)"</p>
+
+
+<script language="JavaScript" type="text/javascript">
+//<![CDATA[
+   <!--
+   document.write('</div>');
+   -->
+//]]>
+</script>
+</div>
+</div>
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<hr class="blue" />
+
+<h2 style="text-align: center;">Return to: <a href="../JLEX/JLEX-index.html">Javascript Lunar Eclipse Explorer Index Page</a></h2>
+
+<h2 style="text-align: center;">Return to: <a href="../JSEX/JSEX-index.html">Javascript Solar Eclipse Explorer Index Page</a></h2>
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<script language="JavaScript" type="text/javascript" src="../style/footer-1.js"></script>
+2007 May 31
+
+<script language="JavaScript" type="text/javascript" src="../style/footer-2.js"></script>
+<noscript>
+<hr class="blue" />
+<h3 align="center">Go to <a href="../solar.html">NASA Solar Eclipse
+Page</a></h3>
+
+<h3 align="center">Go to <a href="../lunar.html">NASA Lunar Eclise Page</a></h3>
+<h3 align="center">Go to <a href="../transit/transit.html">NASA Planetary Transit Page</a></h3>
+<h3 align="center">Go to <a href="../resource.html">NASA Eclipse Resource Page</a></h3>
+<hr class="blue" />
+<table border="5" cellspacing="5" align="center">
+<tr>
+<td>
+<table align="center"><tr><td><img src="../image/NASAlogo.tiny.gif" alt="NASA logo" /></td>
+<td><p>Webmaster: Fred Espenak<br />
+Email: <a href="mailto:espenak@gsfc.nasa.gov">espenak@gsfc.nasa.gov</a></p>
+
+<p>Official NASA Representative: Dr. Drake Deming<br />
+Email: <a
+href="mailto:ddeming@pop600.gsfc.nasa.gov">ddeming@pop600.gsfc.nasa.gov</a></p></td></tr>
+</table>
+<p align="center">Planetary Systems Laboratory &#8211; Code 693.0<br />
+NASA's Goddard Space Flight Center, Greenbelt, Maryland 20771, USA</p></td>
+</tr>
+</table>
+</noscript>
+</body>
+</html>

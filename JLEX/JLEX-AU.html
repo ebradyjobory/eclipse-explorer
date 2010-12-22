@@ -1,0 +1,465 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+   <title>
+Javascript Lunar Eclipse Explorer for SOUTHEAST ASIA, AUSTRALIA & OCEANA
+   </title>
+   <script language="JavaScript" type="text/javascript" src="../style/header.js"></script>
+   <script language="JavaScript" src="city-au.js"></script>
+   <script language="JavaScript" src="program.js"></script>
+   <meta name="author" content="F. Espenak" />
+   <meta name="keywords" content="eclipse, lunar, moon, total" />
+   <meta name="description" content="This page is part of NASA's Javascript Lunar Eclipse Explorer. 
+It can compute the local circumstances for every lunar eclipse visible from a city for any century from -1999 to 3000 (2000 BCE to 3000 CE)." />
+</head>
+
+<body class="lnfiveon" onload="init()">
+<script language="JavaScript" type="text/javascript" src="../style/highlighter.js"></script>
+
+<script language="JavaScript" type="text/javascript" src="../style/navbar.js"></script>
+<noscript>
+<h1><a href="http://www.nasa.gov/">NASA (National Aeronautics and Space Administration)</a></h1>
+<ul>
+   <li id="one"><a href="../eclipse.html"><span>Home</span></a></li>
+   <li id="two"><a href="../solar.html"><span>Solar Eclipses</span></a></li>
+   <li id="three"><a href="../lunar.html"><span>Lunar Eclipses</span></a></li>
+
+   <li id="four"><a href="../transit/transit.html"><span>Planetary Transits</span></a></li>
+   <li id="five"><a href="../phase/phase2001gmt.html"><span>Moon Phases</span></a></li>
+</ul>
+<h1><a href="../eclipse.html">Eclipse Home Page</a></h1>
+<h2>by Fred Espenak, GSFC Planetary Systems Laboratory</h2>
+</noscript>
+
+<div id="contentwrapper">
+
+<div id="singlecolumn">
+
+<h1 class="box">Javascript Lunar Eclipse Explorer</h1>
+<h2 class="box"><strong> 
+  SOUTHEAST ASIA, AUSTRALIA & OCEANA
+</strong></h2>
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<div align="center">
+<h2>Instructions</h2>
+
+<p><em>Your web browser must have Javascript turned on to generate eclipse predictions with this web page.</em></p>
+
+<p class="quote">
+The Javascript Lunar Eclipse Explorer can compute the local circumstances for every lunar eclipse visible from a city for any century from -1999 to 3000 (2000 BCE to 3000 CE). 
+Just follow these instructions:
+
+   <ul>
+      <li>Section 1 - Select a city from the drop-down menu or manually enter the geographic coordinates and time zone.</li>
+      <li>Section 2 - Choose the eclipse types to include in the search.</li>
+      <li>Section 3 - Select the desired century by clicking the button.</li>
+      <li>Section 4 - A table will be generated giving the local circumstances for every eclipse visible from the city.</li>
+   </ul>
+   
+</p>
+<p class="quote">All times are displayed in local time using the value from the <em>Time Zone</em> field in Section 1 (add 1 hour for Daylight Saving Time). 
+The start and end times of <em>penumbral</em> phases are of academic interest only since these events are never visible to the eye.  
+</p>
+<p class="quote">Events shown in gray occur below the horizon and can not be seen from the selected location. 
+The calendar date of an eclipse refers to the start time of the eclipse, even if the Moon is below the horizon at that time. 
+If an eclipse begins before midnight and ends after midnight, the latter  phases occur on the following calendar date.
+</p>
+<p class="quote">For more information about the local circumstances table, see <a href="JLEX-key.html">Key to Lunar Eclipse Explorer</a>.
+</p>
+<p class="quote">The <a href="../JSEX/JSEX-index.html">Javascript Solar Eclipse Explorer</a> is a similar web tool for determining the visibility of <strong>solar</strong> eclipses from any city. 
+</p>
+
+<pre>
+</pre>
+</div>
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<hr class="blue" />
+
+<form name="eclipseform">
+<div align="center">
+<table border="0" cellspacing="14">
+<h2>Section 1: City Coordinates</h2>
+<tr><td>Choose city, or enter coordinates: </td></tr>
+<tr><td><select name="cityndx" onchange="citychange()" id="el_cities">
+<option value="-1">Choose City...</option>
+</select>
+</td></tr>
+</table>
+</div>
+
+<div align="center">
+<table border="0">
+<tr>
+  <td align="right"> Name: </td>
+  <td>
+    <input type="text" name="loc_name" size="30" onchange="newloc()">
+  </td>
+</tr>
+<tr>
+  <td align="right"> Latitude: </td>
+  <td>
+       <input type="text" name="latd" size="3" onchange="newloc()"> deg  
+	 <input type="text" name="latm" size="3" onchange="newloc()"> min  
+       <input type="text" name="lats" size="3" onchange="newloc()"> sec 
+        <select name="latx" size="1" onchange="newloc()">
+          <option value="1">N</option>
+          <option value="-1">S</option>
+        </select>
+  </td>
+</tr>
+<tr>
+ <td align="right">Longitude: </td>
+ <td>
+       <input type="text" size="3" name="lond" onchange="newloc()"> deg  
+       <input type="text" size="3" name="lonm" onchange="newloc()"> min  
+       <input type="text" size="3" name="lons" onchange="newloc()"> sec 
+        <select name="lonx" size="1" onchange="newloc()">
+          <option value="1">W</option>
+          <option value="-1">E</option>
+        </select>
+ </td>
+</tr>
+<tr>
+<td align="right">Altitude: </td>
+      <td><input type="text" size="5" name="alt" onchange="newloc()"> meters</td>
+     </tr>
+<tr>
+      <td align="right">Time Zone: </td>
+      <td>
+       <select name="tzh" size="1" onchange="newloc()">
+          <option value="0">00</option>
+          <option value="1">01</option>
+          <option value="2">02</option>
+          <option value="3">03</option>
+          <option value="4">04</option>
+          <option value="5">05</option>
+          <option value="6">06</option>
+          <option value="7">07</option>
+          <option value="8">08</option>
+          <option value="9">09</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+        </select>
+      
+        <select name="tzm" size="1" onchange="newloc()">
+          <option value="0">00</option>
+          <option value="15">15</option>
+          <option value="30">30</option>
+          <option value="45">45</option>
+        </select>
+        <select name="tzx" size="1" onchange="newloc()">
+          <option value="-1">E</option>
+          <option value="1">W</option>
+        </select>
+      </td>
+    </tr>
+  </table>
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<hr class="blue" />
+
+<h2>Section 2: Eclipse Type Search Criteria</h2>
+
+<p>
+Choose eclipse types for search: 
+</p>
+<p>
+<input type="radio" name="ecltype" value="4" checked onclick="clearoldresults()">All eclipses
+<input type="radio" name="ecltype" value="2" onclick="clearoldresults()">Partial and Total
+<input type="radio" name="ecltype" value="1" onclick="clearoldresults()">Total
+</p>
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<hr class="blue" />
+
+<h2>Section 3: Century Selection</h2>
+
+<table border="0">
+ <tr>
+    <td align="right">Choose century*: </td>
+ </tr>
+
+ <tr>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LEm1999')" value= "-1999 to -1900">
+    </td>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LEm1899')" value= "-1899 to -1800">
+    </td>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LEm1799')" value= "-1799 to -1700">
+    </td>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LEm1699')" value= "-1699 to -1600">
+    </td>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LEm1599')" value= "-1599 to -1500">
+    </td>
+ </tr>
+
+ <tr>
+ <tr>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LEm1499')" value= "-1499 to -1400">
+    </td>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LEm1399')" value= "-1399 to -1300">
+    </td>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LEm1299')" value= "-1299 to -1200">
+    </td>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LEm1199')" value= "-1199 to -1100">
+    </td>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LEm1099')" value= "-1099 to -1000">
+    </td>
+ </tr>
+
+ <tr>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LEm0999')" value="-0999 to -0900">
+    </td>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LEm0899')" value="-0899 to -0800">
+    </td>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LEm0799')" value= "-0799 to -0700">
+    </td>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LEm0699')" value= "-0699 to -0600">
+    </td>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LEm0599')" value= "-0599 to -0500">
+    </td>
+ </tr>
+
+ <tr>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LEm0499')" value= "-0499 to -0400">
+    </td>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LEm0399')" value= "-0399 to -0300">
+    </td>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LEm0299')" value= "-0299 to -0200">
+    </td>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LEm0199')" value= "-0199 to -0100">
+    </td>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LEm0099')" value= "-0099 to -0000">
+    </td>
+ </tr>
+
+ <tr>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LE0001')" value="0001 - 0100">
+    </td>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LE0101')" value="0101 - 0200">
+    </td>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LE0201')" value="0201 - 0300">
+    </td>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LE0301')" value="0301 - 0400">
+    </td>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LE0401')" value="0401 - 0500">
+    </td>
+ </tr>
+ 
+ <tr>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LE0501')" value="0501 - 0600">
+    </td>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LE0601')" value="0601 - 0700">
+    </td>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LE0701')" value="0701 - 0800">
+    </td>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LE0801')" value="0801 - 0900">
+    </td>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LE0901')" value="0901 - 1000">
+    </td>
+ </tr>
+ 
+ <tr>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LE1001')" value="1001 - 1100">
+    </td>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LE1101')" value="1101 - 1200">
+    </td>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LE1201')" value="1201 - 1300">
+    </td>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LE1301')" value="1301 - 1400">
+    </td>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LE1401')" value="1401 - 1500">
+    </td>
+ </tr>
+ 
+ <tr>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LE1501')" value="1501 - 1600">
+    </td>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LE1601')" value="1601 - 1700">
+    </td>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LE1701')" value="1701 - 1800">
+    </td>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LE1801')" value="1801 - 1900">
+    </td>
+    <td align="center">
+        <input type="button" onclick="settimeperiod('LE1901')" value="1901 - 2000">
+    </td>
+ </tr>
+ 
+ <tr>
+      <td colspan="1" align="center">
+        <input type="button" onclick="settimeperiod('LE2001')" value="2001 - 2100">
+      </td>
+      <td colspan="1" align="center">
+        <input type="button" onclick="settimeperiod('LE2101')" value="2101 - 2200">
+      </td>
+      <td colspan="1" align="center">
+        <input type="button" onclick="settimeperiod('LE2201')" value="2201 - 2300">
+      </td>
+      <td colspan="1" align="center">
+        <input type="button" onclick="settimeperiod('LE2301')" value="2301 - 2400">
+      </td>
+      <td colspan="1" align="center">
+        <input type="button" onclick="settimeperiod('LE2401')" value="2401 - 2500">
+      </td>
+ </tr>
+ 
+ <tr>
+      <td colspan="1" align="center">
+        <input type="button" onclick="settimeperiod('LE2501')" value="2501 - 2600">
+      </td>
+      <td colspan="1" align="center">
+        <input type="button" onclick="settimeperiod('LE2601')" value="2601 - 2700">
+      </td>
+      <td colspan="1" align="center">
+        <input type="button" onclick="settimeperiod('LE2701')" value="2701 - 2800">
+      </td>
+      <td colspan="1" align="center">
+        <input type="button" onclick="settimeperiod('LE2801')" value="2801 - 2900">
+      </td>
+      <td colspan="1" align="center">
+        <input type="button" onclick="settimeperiod('LE2901')" value="2901 - 3000">
+      </td>
+ </tr>
+ 
+</table>
+
+ <p>* Negative years are equivalent to the year BC minus 1 year (See: <a href="../SEhelp/dates.html"> Dating Conventions</a> ). </p>
+
+<pre>
+</pre>
+
+</div>
+</form>
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<hr class="blue" />
+
+<h2>Section 4: Eclipse Predictions</h2>
+<div id="el_results" align="center">
+
+
+</div>
+<p align="center">
+Events shown in gray occur below the horizon and are not visible.
+<br />
+The calendar date of an eclipse refers to the start of the penumbral eclipse, even if this phase is not visible (i.e., Moon is below the horizon). 
+If an eclipse begins before midnight and ends after midnight, the latter  phases occur on the following calendar date. </p>
+<p align="center">
+ Negative years are equivalent to the year BC minus 1 year (See: <a href="../SEhelp/dates.html"> Dating Conventions</a> ). </p>
+
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<hr class="blue" />
+
+<h2>Acknowledgments</h2>
+
+<p class="quote">The Javascript Lunar Eclipse Explorer was developed by Chris O'Byrne and Fred Espenak. 
+It features drop-down menus for city coordinates and buttons to select any century from -1999 to 3000 (2000 BCE to 3000 CE). 
+It can be used to explore the frequency and circumstances of all lunar eclipses visible from any location on Earth. 
+</p>
+
+<p class="quote">The Besselian elements, contact times and values of <a href="../SEcat5/deltat.html">&#916;T</a> used in Lunar Eclipse Explorer were calculated by Jean Meeus and Fred Espenak. 
+They are based on the same solar and lunar ephemerides used in the <em><a href="../SEpubs/5MCSE.html">Five Millennium Canon of Solar Eclipses: -1999 to +3000</a></em>.
+For the purposes of calculating eclipse circumstances from a given place, the growing <a href="../SEcat5/uncertainty.html">uncertainty</a> 
+in the value of <a href="../SEcat5/deltat.html">&#916;T</a> and the corresponding longitude become unacceptably large outside time period of -1999 to 3000 (2000 BCE to 3000 CE). 
+</p>
+
+<p class="quote">Permission is freely granted to reproduce this data when accompanied by an acknowledgment:</p>
+
+<p align="center">"Eclipse Predictions by Fred Espenak and Chris O'Byrne (NASA's GSFC)"</p>
+
+
+<script language="JavaScript" type="text/javascript">
+//<![CDATA[
+   <!--
+   document.write('</div>');
+   -->
+//]]>
+</script>
+</div>
+</div>
+
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<hr class="blue" />
+
+<h2 style="text-align: center;">Return to: <a href="JLEX-index.html">Javascript Lunar Eclipse Explorer Index Page</a></h2>
+
+<h2 style="text-align: center;">Return to: <a href="../JSEX/JSEX-index.html">Javascript Solar Eclipse Explorer Index Page</a></h2>
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<script language="JavaScript" type="text/javascript" src="../style/footer-1.js"></script>
+2007 May 31
+
+<script language="JavaScript" type="text/javascript" src="../style/footer-2.js"></script>
+<noscript>
+<hr class="blue" />
+<h3 align="center">Go to <a href="../solar.html">NASA Solar Eclipse
+Page</a></h3>
+
+<h3 align="center">Go to <a href="../lunar.html">NASA Lunar Eclise Page</a></h3>
+<h3 align="center">Go to <a href="../transit/transit.html">NASA Planetary Transit Page</a></h3>
+<h3 align="center">Go to <a href="../resource.html">NASA Eclipse Resource Page</a></h3>
+<hr class="blue" />
+<table border="5" cellspacing="5" align="center">
+<tr>
+<td>
+<table align="center"><tr><td><img src="../image/NASAlogo.tiny.gif" alt="NASA logo" /></td>
+<td><p>Webmaster: Fred Espenak<br />
+Email: <a href="mailto:espenak@gsfc.nasa.gov">espenak@gsfc.nasa.gov</a></p>
+
+<p>Official NASA Representative: Dr. Drake Deming<br />
+Email: <a
+href="mailto:ddeming@pop600.gsfc.nasa.gov">ddeming@pop600.gsfc.nasa.gov</a></p></td></tr>
+</table>
+<p align="center">Planetary Systems Laboratory &#8211; Code 693.0<br />
+NASA's Goddard Space Flight Center, Greenbelt, Maryland 20771, USA</p></td>
+</tr>
+</table>
+</noscript>
+</body>
+</html>
